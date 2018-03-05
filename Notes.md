@@ -71,3 +71,6 @@ info: Contains the abstract syntax tree (AST) of the query and information about
 
 The filter argument is used to build a filter object (called where) to retrieve link elements where the description or the url contains that filter string.
 Finally, the resolver simply delegates the execution of the incoming query to the links resolver from the Prisma API and returns the result of that execution.
+
+When adding a mutation to your API, you need to add a corresponding field to the Mutation type of your GraphQL schema and then implement the resolver for that field. Just like with queries!
+
