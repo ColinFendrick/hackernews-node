@@ -108,3 +108,10 @@ the steps for creating adding a new feature to your GraphQL API:
 Subscriptions are a GraphQL feature that allows the server to send data to the clients when a specific event happens. Subscriptions are usually implemented with WebSockets, where the server holds a steady connection to the client. This means you’re not using the Request-Response-Cycle that we used for all previous interactions with the API any more. Instead, the client initially opens up a steady connection to the server by specifying which event it is interested in. Every time this particular event happens, the server uses the connection to push the data that’s related to the event to the client.
 
 To implement subscriptions for your GraphQL API, you follow the same process of adding queries and mutations. First add them to your application schema, then implement the corresponding resolvers.
+
+The main process you went through for each feature you implemented consisted of these steps:
+
+- Adjust the Prisma data model to account for the data the new feature requires (e.g. adding a User type for implementing authentication).
+- Deploy the Prisma database service to apply the changes from the previous step, this will update your auto-generated Prisma schema which contains all the CRUD operations for the types in your data model.
+- Add a new root field to the application schema that represents the feature (e.g. post(url: String!, description: String!): Link! for posting new links).
+- Implement the resolver for the root field by delegating the execution to the Prisma database service using the prisma-binding package.
