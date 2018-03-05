@@ -95,3 +95,11 @@ The server receives a login mutation with the email and password of an existing 
 The server compares the hashed version of the password that’s stored with the password that was received in the login mutation
 If the passwords match, the server generates an authentication token (JWT) by signing the token’s payload (which is user’s id) with the application secret
 The server returns the authentication token and user info to the client who made the request
+
+
+the steps for creating adding a new feature to your GraphQL API:
+
+1. Adjust data model (if necessary)
+2. Deploy Prisma database service to apply changes to data model (if necessary)
+3. Add new root field (on the Query, Mutation or Subscription field) to application schema
+4. Implement the resolver for the new root field
